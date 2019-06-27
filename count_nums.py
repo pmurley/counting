@@ -32,6 +32,8 @@ def satisfies_condition(l):
 
 n = MINIMUM_N
 
+f = open('results.txt','w')
+
 while(n <= MAXIMUM_N):
     all_possibilities = itertools.permutations(range(1,n+1))
 
@@ -49,6 +51,17 @@ while(n <= MAXIMUM_N):
     print('n: %d' % n)
     print('Number that satisfy condition: %d' % success)
     print()
+
+    f.write('N = %d\n' % n)
+    f.write('Number that satisfy: %d\n\n' % success)
+    for s in successes:
+        for elem in s:
+            f.write(str(elem) + ' ')
+        f.write('\n')
+    f.write('\n\n')
+    f.write('--------------------------------\n')
+    f.flush()
+
     n += 1
 
 print('-----------------------')
